@@ -1,201 +1,199 @@
-import { Link } from 'react-router-dom';
+import { useRef } from 'react';
 import {
   Search,
-  GraduationCap,
+  ChevronLeft,
+  ChevronRight,
+  ShoppingCart,
+  Megaphone,
   HeartHandshake,
   Building2,
-  Receipt,
-  FileText,
-  Calendar,
-  Bus,
-  Trees,
+  Car,
   ShieldCheck,
-  ArrowLeft,
-  CreditCard,
-  ClipboardList,
-  Bell,
+  Music,
+  GraduationCap,
+  Receipt,
   User,
-  Home as HomeIcon
+  Wallet,
+  Zap,
+  FileCheck
 } from 'lucide-react';
+import MenuCard from '../components/MenuCard';
 
 const services = [
-  { icon: Receipt, label: 'ארנונה', slug: 'arnona' },
-  { icon: GraduationCap, label: 'חינוך', slug: 'education' },
-  { icon: HeartHandshake, label: 'רווחה', slug: 'revaha' },
-  { icon: Building2, label: 'הנדסה', slug: 'handasa' },
-  { icon: FileText, label: 'טפסים', slug: 'forms' },
-  { icon: Calendar, label: 'אירועים', slug: 'events' },
-  { icon: Bus, label: 'תחבורה', slug: 'transport' },
-  { icon: Trees, label: 'איכ"ס', slug: 'environment' },
-  { icon: ShieldCheck, label: 'ביטחון', slug: 'security' }
-];
-
-const personalActions = [
-  { icon: HomeIcon, label: 'הנכסים שלי' },
-  { icon: CreditCard, label: 'יתרת חוב' },
-  { icon: ClipboardList, label: 'הבקשות שלי' },
-  { icon: Bell, label: 'הודעות אישיות' }
-];
-
-const quickActions = [
-  { icon: Receipt, label: 'תשלום ארנונה' },
-  { icon: FileText, label: 'הזמנת תושב' },
-  { icon: Building2, label: 'בקשת טאבו' },
-  { icon: GraduationCap, label: 'רישום לחוגים' },
-  { icon: HeartHandshake, label: 'דיווח מפגע' },
-  { icon: ClipboardList, label: 'אישור על תשלום' }
+  { label: 'רוכשים בקליק', icon: ShoppingCart },
+  { label: 'שילוט', icon: Megaphone },
+  { label: 'רווחה', icon: HeartHandshake },
+  { label: 'הנדסה', icon: Building2 },
+  { label: 'חניה', icon: Car },
+  { label: 'פיקוח', icon: ShieldCheck },
+  { label: 'חוגים', icon: Music },
+  { label: 'חינוך', icon: GraduationCap },
+  { label: 'ארנונה', icon: Receipt }
 ];
 
 export default function Home() {
+  const iconsRef = useRef(null);
+
+  const scroll = (dir) => {
+    if (!iconsRef.current) return;
+    iconsRef.current.scrollBy({ left: dir * 320, behavior: 'smooth' });
+  };
+
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-hero-gradient pb-24 pt-28 text-white">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute -right-32 top-10 h-96 w-96 rounded-full bg-white/20 blur-3xl" />
-          <div className="absolute -left-24 bottom-0 h-80 w-80 rounded-full bg-muni-accent/40 blur-3xl" />
-        </div>
-
-        <div className="relative mx-auto max-w-5xl px-6 text-center">
-          <h1 className="text-3xl font-bold leading-tight md:text-5xl">
+      {/* HERO */}
+      <section className="hero-bg relative pb-32 pt-[120px]">
+        {/* Title centered */}
+        <div className="mx-auto mt-12 max-w-[564px] px-6 text-center">
+          <h1 className="text-[36px] font-medium leading-[42px] tracking-[-0.72px] text-white">
             שלום ישראל, הגעת למרחב הדיגיטלי של
             <br />
-            <span className="text-muni-accent">מועצה אזורית מנשה</span>
+            מועצה אזורית מנשה
           </h1>
+        </div>
 
-          {/* Search bar */}
-          <div className="mx-auto mt-10 flex max-w-2xl items-center gap-2 rounded-2xl bg-white p-2 shadow-card">
-            <Search size={20} className="mr-3 text-muni-muted" />
+        {/* Search bar */}
+        <div className="relative mx-auto mt-12 w-full max-w-[848px] px-6">
+          <div className="flex h-[72px] items-center justify-between gap-4 rounded-full bg-white px-8 shadow-search">
+            <Search size={24} className="shrink-0 text-muni-primary" />
             <input
               type="text"
-              placeholder="איך אפשר לעזור? חפשו שירות, טופס או מידע..."
-              className="flex-1 bg-transparent text-base text-muni-text outline-none placeholder:text-muni-muted"
+              placeholder="פתיחת תיק, תשלום שובר, הנכס שלי..."
+              className="flex-1 bg-transparent text-right text-[20px] text-muni-darkgray outline-none placeholder:text-muni-tertiary"
             />
-            <button className="rounded-xl bg-muni-primary px-6 py-3 font-medium text-white transition hover:bg-muni-dark">
-              חיפוש
-            </button>
           </div>
         </div>
       </section>
 
-      {/* Service icons */}
-      <section className="relative -mt-12 mx-auto max-w-7xl px-6">
-        <div className="rounded-3xl bg-white p-6 shadow-card md:p-10">
-          <div className="grid grid-cols-3 gap-4 md:grid-cols-9">
+      {/* ICONS row — overlapping hero/cards section */}
+      <section className="-mt-12 relative z-10">
+        <div className="mx-auto flex max-w-[1440px] items-center gap-6 px-6 py-12">
+          <button
+            onClick={() => scroll(1)}
+            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-muni-primary shadow-md transition hover:bg-muni-light"
+            aria-label="הקודם"
+          >
+            <ChevronRight size={20} />
+          </button>
+
+          <div
+            ref={iconsRef}
+            className="no-scrollbar flex flex-1 items-start justify-start gap-4 overflow-x-auto scroll-smooth md:justify-center"
+          >
             {services.map((s) => (
-              <Link
-                key={s.slug}
-                to={`/service/${s.slug}`}
-                className="group flex flex-col items-center gap-3 rounded-2xl p-3 transition hover:bg-muni-light"
+              <button
+                key={s.label}
+                className="group flex w-[150px] shrink-0 flex-col items-center gap-2"
               >
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-muni-light text-muni-primary transition group-hover:bg-muni-primary group-hover:text-white">
-                  <s.icon size={28} strokeWidth={1.6} />
+                <div className="relative flex h-[100px] w-[100px] items-center justify-center rounded-full bg-white shadow-md transition group-hover:-translate-y-1 group-hover:shadow-lg">
+                  <div className="flex h-[88px] w-[88px] items-center justify-center rounded-full bg-gradient-to-br from-muni-secondary to-muni-accent">
+                    <s.icon size={42} strokeWidth={1.4} className="text-muni-primary" />
+                  </div>
                 </div>
-                <span className="text-sm font-medium text-muni-text">{s.label}</span>
-              </Link>
+                <span className="text-[20px] leading-6 text-muni-primary">{s.label}</span>
+              </button>
             ))}
           </div>
+
+          <button
+            onClick={() => scroll(-1)}
+            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-muni-primary shadow-md transition hover:bg-muni-light"
+            aria-label="הבא"
+          >
+            <ChevronLeft size={20} />
+          </button>
         </div>
       </section>
 
-      {/* Main grid: personal area + quick actions */}
-      <section className="mx-auto mt-16 max-w-7xl px-6">
-        <div className="grid gap-6 lg:grid-cols-2">
-          <DashboardCard title="האזור האישי שלי" icon={User} link="/my-account">
-            <div className="grid grid-cols-2 gap-3">
-              {personalActions.map((a) => (
-                <button key={a.label} className="flex items-center gap-3 rounded-xl border border-gray-100 bg-muni-bg p-4 text-right transition hover:border-muni-primary hover:bg-muni-light">
-                  <a.icon size={20} className="text-muni-primary" />
-                  <span className="text-sm font-medium">{a.label}</span>
-                </button>
-              ))}
-            </div>
-          </DashboardCard>
+      {/* CARDS — 2x2 grid */}
+      <section className="cards-bg relative">
+        <div className="mx-auto grid max-w-[1140px] gap-x-16 gap-y-16 px-6 py-12 md:grid-cols-2 md:justify-items-center">
+          <MenuCard
+            title="האזור האישי שלי"
+            icon={User}
+            items={[
+              { label: 'פרטים אישיים' },
+              { label: 'עדכון פרטים' },
+              { label: 'התשלומים שלי' },
+              { label: 'הגדרות החשבון שלי' },
+              {
+                label: 'הנכס שלי',
+                active: true,
+                children: ['פרטי הנכס שלי', 'כתובת הנכס', 'שם הפעולה']
+              },
+              { label: 'הסדר תשלום' },
+              { label: 'תעריפי ארנונה' }
+            ]}
+          />
 
-          <DashboardCard title="פעולות מהירות" icon={ArrowLeft} link="/forms">
-            <div className="grid grid-cols-2 gap-3">
-              {quickActions.map((a) => (
-                <button key={a.label} className="flex items-center gap-3 rounded-xl border border-gray-100 bg-muni-bg p-4 text-right transition hover:border-muni-primary hover:bg-muni-light">
-                  <a.icon size={20} className="text-muni-primary" />
-                  <span className="text-sm font-medium">{a.label}</span>
-                </button>
-              ))}
-            </div>
-          </DashboardCard>
+          <MenuCard
+            title="פעולות מהירות"
+            icon={Zap}
+            items={[
+              { label: 'רוכשים בקליק' },
+              { label: 'הרשמה לחוגים' },
+              {
+                label: 'חינוך',
+                active: true,
+                children: ['רישום גני ילדים', 'רישום קייטנות', 'הצגת שיבוץ']
+              },
+              { label: 'ויתור סודיות' },
+              { label: 'שליחת שובר למייל' },
+              { label: 'בקשה כללית' },
+              { label: 'השתתפות עצמית' },
+              { label: 'הצהרת מספר נפשות' },
+              { label: 'עדכון הוראת קבע בתשלום אשראי' }
+            ]}
+          />
 
-          <DashboardCard title="תשלומים וגבייה" icon={CreditCard} link="/payments">
-            <ul className="space-y-3">
-              <PaymentRow label="ארנונה - חודש נוכחי" amount="₪ 487.20" />
-              <PaymentRow label="מים וביוב" amount="₪ 192.50" />
-              <PaymentRow label="היטל שמירה" amount="₪ 65.00" />
-              <PaymentRow label="חוגי ילדים" amount="₪ 240.00" />
-            </ul>
-            <Link to="/payments" className="btn-primary mt-4 w-full">
-              לתשלום מאובטח
-            </Link>
-          </DashboardCard>
+          <MenuCard
+            title="תשלומים וגבייה"
+            icon={Wallet}
+            items={[
+              { label: 'תשלום יתרת חוב' },
+              { label: 'תשלום שובר' },
+              { label: 'בקשה לאישור בטאבו' },
+              { label: 'תשלום מזדמן' },
+              { label: 'ספק של הרשות' },
+              {
+                label: 'הנדסה',
+                active: true,
+                children: ['תיק מידע להיתר', 'אישור היעדר חובות', 'דף מידע תכנוני', 'חידוש היעדר חובות']
+              },
+              { label: 'אישור על גובה תשלומים' }
+            ]}
+          />
 
-          <DashboardCard title="אישורים וטפסים" icon={ClipboardList} link="/forms">
-            <ul className="space-y-3">
-              <FormRow label="אישור תושב" />
-              <FormRow label="אישור על תשלום ארנונה" />
-              <FormRow label="טופס שינוי מחזיק" />
-              <FormRow label="בקשת הנחה בארנונה" />
-              <FormRow label="טופס דיווח מפגע" />
-            </ul>
-          </DashboardCard>
+          <MenuCard
+            title="אישורים וטפסים"
+            icon={FileCheck}
+            items={[
+              { label: 'בקשת הנחה לארנונה' },
+              { label: 'הפקת אישור תושב' },
+              { label: 'אישור תושב לרשות המיסים' },
+              { label: 'פתיחת תיק' },
+              { label: 'החלפת משלמים' },
+              { label: 'חניה' },
+              { label: 'חידוש אישור לטאבו' },
+              { label: 'הנחות ארנונה' },
+              { label: 'רישום ספק חדש' }
+            ]}
+          />
         </div>
       </section>
 
-      {/* About section */}
-      <section className="mx-auto mt-20 max-w-5xl px-6 text-center">
-        <h2 className="text-2xl font-bold text-muni-deep md:text-3xl">מאחורי החיבור בין העיר לרשות</h2>
-        <p className="mx-auto mt-4 max-w-3xl text-muni-muted">
-          מאחורי המרחב הדיגיטלי החדשני של MUNI עומדת EPR מערכות בע"מ, מקבוצת TSG.
+      {/* ABOUT section */}
+      <section className="mx-auto max-w-[900px] px-6 py-24 text-center">
+        <h2 className="text-3xl font-semibold text-muni-primary">מאחורי החיבור בין העיר לרשות</h2>
+        <p className="mx-auto mt-6 max-w-[760px] text-base leading-[1.9] text-muni-darkgray">
+          מאחורי המרחב הדיגיטלי החדשני של muni עומדת <span className="font-semibold">EPR מערכות בע"מ</span>, מקבוצת <span className="font-semibold">TSG</span>.
           החברה מובילה עם ניסיון של למעלה מ-20 שנה באספקת פתרונות טכנולוגיים מקיפים לרשויות מקומיות בישראל,
-          וגאה להוביל את השינוי לעבר תקשורת דיגיטלית מהירה ויעילה בין התושב לרשות, תוך מתן כלים מתקדמים לניהול ושירות אפקטיבי לשני הצדדים.
+          וגאה להוביל את השינוי לעבר תקשורת דיגיטלית מהירה ויעילה בין התושב לרשות,
+          תוך מתן כלים מתקדמים לניהול ושירות אפקטיבי לשני הצדדים. פיתחנו את muni במיוחד עבורכם,
+          תושבי הרשויות המקומיות ועובדי הרשות. אנו מחויבים לספק חוויית שימוש פשוטה, מהירה ונעימה.
         </p>
-        <button className="btn-primary mt-8">קראו עוד עלינו</button>
+        <button className="btn-primary mt-10">קראו עוד עלינו</button>
       </section>
     </>
-  );
-}
-
-function DashboardCard({ title, icon: Icon, link, children }) {
-  return (
-    <div className="card">
-      <div className="mb-5 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-muni-light text-muni-primary">
-            <Icon size={20} />
-          </div>
-          <h3 className="text-lg font-bold text-muni-deep">{title}</h3>
-        </div>
-        {link && (
-          <Link to={link} className="text-sm font-medium text-muni-primary hover:text-muni-dark">
-            לצפייה בכל הפרטים ←
-          </Link>
-        )}
-      </div>
-      {children}
-    </div>
-  );
-}
-
-function PaymentRow({ label, amount }) {
-  return (
-    <li className="flex items-center justify-between rounded-lg bg-muni-bg px-4 py-3">
-      <span className="text-sm">{label}</span>
-      <span className="font-semibold text-muni-deep">{amount}</span>
-    </li>
-  );
-}
-
-function FormRow({ label }) {
-  return (
-    <li className="flex items-center justify-between rounded-lg border border-gray-100 px-4 py-3 transition hover:border-muni-primary hover:bg-muni-light">
-      <span className="text-sm">{label}</span>
-      <ArrowLeft size={16} className="text-muni-muted" />
-    </li>
   );
 }

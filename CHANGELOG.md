@@ -7,15 +7,30 @@
 
 ## [Unreleased]
 
-### השתנה 🔧
-- שדרוג Vite מ-5.4 ל-6.0 (תאימות ל-Cloudflare Pages)
-- עדכון `@vitejs/plugin-react`, `postcss`, `tailwindcss` לגרסאות עדכניות
+### השתנה 🔧 — נאמנות ל-Figma
+- **פונט** Heebo → **Rubik** (כל האתר), בהתאם למקור
+- **צבעים** עודכנו לפי tokens מ-Figma:
+  - Primary `#027DB3` (היה `#1F87C7`)
+  - Secondary `#83DFE8`, Accent `#5CEBBE`, Light `#E6F2F7`
+  - Gray6 `#625F68`, Dark gray `#484848`
+- **Hero** עוצב מחדש עם רקע גרדיאנט תכלת-טורקיז ובלובים רכים
+- **שורת חיפוש** 848×72 pill צף, צל כחול `0 16px 16px rgba(2,125,179,0.2)`
+- **שורת אייקונים** — 9 אייקונים עגולים (100×100) עם גרדיאנט טורקיז+חצי גלילה
+- **כרטיסים** — 4 כרטיסים (500px) רחבים rounded-[36px], header עם אייקון 70×70 וכותרת 28px
+- כל פריט תפריט בכרטיס (46×46), עם תמיכה ב-expandable items
+- **Header** — לוגו מועצה 100px מצד ימין, user pill, כל השירותים + muni logo משמאל
+- **Footer** — watermark "muni" + צללית עיר טורקיז, EPR + TSG כתגיות
+- **Login** — רקע hero, כרטיס לבן rounded-[36px], טיפוגרפיה מותאמת
 
 ### נוסף ✨
-- `wrangler.jsonc` — תצורת Cloudflare Workers עם `not_found_handling: single-page-application`
+- רכיב `MenuCard` — כרטיס תפריט עם פריטים נפתחים (expandable)
+- רכיב `ServiceIcon` — אייקון שירות עגול מתעופף ב-hover
+- שדרוג Vite 5.4 → 6.4 (תאימות Cloudflare Workers)
+- `wrangler.jsonc` — `not_found_handling: single-page-application`
 
 ### הוסר 🗑️
-- `public/_redirects` — לא נתמך ב-Cloudflare Workers (גרם ללולאה אינסופית)
+- `public/_redirects` — לא נתמך ב-Cloudflare Workers
+- פונט Heebo (הוחלף ב-Rubik)
 
 ### מתוכנן
 - חיבור ל-API של ה-backend

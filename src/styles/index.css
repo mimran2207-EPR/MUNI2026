@@ -2,38 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body, #root {
-  height: 100%;
-}
+html, body, #root { height: 100%; }
 
 body {
-  font-family: 'Heebo', 'Assistant', system-ui, sans-serif;
-  background: #F4F8FB;
-  color: #1A2B3C;
+  font-family: 'Rubik', system-ui, sans-serif;
+  background: #fff;
+  color: #484848;
   -webkit-font-smoothing: antialiased;
 }
 
-@layer components {
-  .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-muni-primary px-6 py-3 font-medium text-white transition hover:bg-muni-dark active:scale-[0.98] disabled:cursor-not-allowed disabled:bg-gray-300;
-  }
-  .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-muni-primary px-6 py-3 font-medium text-muni-primary transition hover:bg-muni-light;
-  }
-  .card {
-    @apply rounded-2xl bg-white p-6 shadow-card transition hover:shadow-cardHover;
-  }
-  .input {
-    @apply w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-base outline-none transition focus:border-muni-primary focus:ring-2 focus:ring-muni-accent/20;
-  }
-  .chip {
-    @apply inline-flex items-center gap-2 rounded-full bg-muni-light px-3 py-1 text-sm text-muni-dark;
-  }
+/* Hero background — matches Figma: deep teal-blue with soft cyan blobs */
+.hero-bg {
+  background:
+    radial-gradient(800px 480px at 18% 30%, rgba(131, 223, 232, 0.35) 0%, transparent 60%),
+    radial-gradient(720px 460px at 82% 70%, rgba(92, 235, 190, 0.18) 0%, transparent 55%),
+    radial-gradient(1100px 600px at 50% 110%, rgba(2, 125, 179, 0.7) 0%, transparent 70%),
+    linear-gradient(135deg, #0a3a55 0%, #0f5d80 45%, #1392c4 100%);
 }
 
-/* City silhouette for footer */
-.city-silhouette {
+/* Soft turquoise blobs behind the cards */
+.cards-bg {
   background:
-    linear-gradient(to top, rgba(15, 61, 92, 0.18) 0%, transparent 60%),
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 200' preserveAspectRatio='none'><path fill='%2316557A' opacity='0.55' d='M0 200 V120 L40 110 L40 80 L80 80 L80 60 L120 60 L120 95 L170 95 L170 70 L210 70 L210 110 L260 110 L260 90 L300 90 L300 50 L340 50 L340 100 L390 100 L390 80 L430 80 L430 130 L480 130 L480 90 L520 90 L520 60 L560 60 L560 110 L610 110 L610 80 L650 80 L650 100 L700 100 L700 70 L740 70 L740 90 L780 90 L780 120 L830 120 L830 80 L870 80 L870 60 L910 60 L910 110 L960 110 L960 90 L1000 90 L1000 70 L1040 70 L1040 110 L1090 110 L1090 90 L1130 90 L1130 60 L1170 60 L1170 100 L1220 100 L1220 80 L1260 80 L1260 110 L1310 110 L1310 90 L1350 90 L1350 70 L1400 70 L1400 110 L1440 110 L1440 200 Z'/></svg>") no-repeat bottom / cover;
+    radial-gradient(640px 609px at -77px 338px, rgba(131, 223, 232, 0.22) 0%, transparent 70%),
+    radial-gradient(793px 755px at 1607px 40px, rgba(92, 235, 190, 0.18) 0%, transparent 70%);
+}
+
+/* Footer city silhouette */
+.city-silhouette {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 220' preserveAspectRatio='none'><path fill='%2383DFE8' opacity='0.55' d='M0 220 V130 L40 120 L40 88 L80 88 L80 62 L120 62 L120 100 L170 100 L170 75 L210 75 L210 115 L260 115 L260 92 L300 92 L300 50 L340 50 L340 105 L390 105 L390 82 L430 82 L430 135 L480 135 L480 92 L520 92 L520 60 L560 60 L560 115 L610 115 L610 82 L650 82 L650 102 L700 102 L700 70 L740 70 L740 92 L780 92 L780 125 L830 125 L830 82 L870 82 L870 60 L910 60 L910 115 L960 115 L960 92 L1000 92 L1000 70 L1040 70 L1040 115 L1090 115 L1090 92 L1130 92 L1130 60 L1170 60 L1170 102 L1220 102 L1220 82 L1260 82 L1260 115 L1310 115 L1310 92 L1350 92 L1350 70 L1400 70 L1400 115 L1440 115 L1440 220 Z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100% auto;
+}
+
+.muni-watermark {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 240'><text x='50%' y='180' font-family='Rubik' font-size='220' font-weight='700' text-anchor='middle' fill='%2383DFE8' opacity='0.35'>muni</text></svg>");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 60% auto;
+}
+
+/* Hide scrollbar but allow horizontal scroll */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-muni-primary px-8 py-3 text-base font-medium text-white transition hover:opacity-90 active:scale-[0.98] disabled:cursor-not-allowed disabled:bg-gray-300;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-muni-primary px-6 py-2.5 text-base font-medium text-muni-primary transition hover:bg-muni-light;
+  }
+  .input {
+    @apply w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-base outline-none transition focus:border-muni-primary focus:ring-2 focus:ring-muni-secondary/30;
+  }
+  .card {
+    @apply rounded-[24px] bg-white p-6 shadow-card transition;
+  }
+  .chip {
+    @apply inline-flex items-center gap-2 rounded-full bg-muni-light px-3 py-1 text-sm text-muni-primary;
+  }
 }

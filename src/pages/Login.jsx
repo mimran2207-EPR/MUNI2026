@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Eye, EyeOff, ShieldCheck, KeyRound } from 'lucide-react';
-import Logo from '../components/Logo';
+import { Eye, EyeOff, ShieldCheck, KeyRound, User } from 'lucide-react';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -24,44 +23,41 @@ export default function Login() {
     const next = [...otp];
     next[idx] = val;
     setOtp(next);
-    if (val && idx < 5) {
-      document.getElementById(`otp-${idx + 1}`)?.focus();
-    }
+    if (val && idx < 5) document.getElementById(`otp-${idx + 1}`)?.focus();
   };
 
   const otpComplete = otp.every((d) => d);
 
   return (
-    <div className="relative min-h-screen bg-hero-gradient pt-24">
-      <div className="mx-auto max-w-md px-6 pb-20">
-        <div className="mb-6 text-center">
-          <Logo variant="light" className="mx-auto" />
-        </div>
-
+    <div className="hero-bg min-h-screen pt-[120px]">
+      <div className="mx-auto max-w-md px-6 pb-20 pt-12">
         {step === 'credentials' && (
-          <form onSubmit={submit} className="rounded-3xl bg-white p-8 shadow-card">
-            <h1 className="mb-2 text-center text-2xl font-bold text-muni-deep">
+          <form onSubmit={submit} className="rounded-[36px] bg-white p-10 shadow-card">
+            <h1 className="mb-3 text-center text-[28px] font-semibold leading-[34px] text-muni-primary">
               ברוכים הבאים למרחב הדיגיטלי
               <br />
               של הרשות שלכם
             </h1>
-            <p className="mb-8 text-center text-sm text-muni-muted">
+            <p className="mb-8 text-center text-sm text-muni-gray6">
               לאימות פרטייך באמצעות המערכת להזדהות לאומית
             </p>
 
-            <label className="mb-1 block text-sm font-medium text-muni-text">
-              מספר זהות בן 9 ספרות <span className="text-muni-muted">(כולל ספרת ביקורת)</span>
+            <label className="mb-1 block text-sm font-medium text-muni-darkgray">
+              מספר זהות בן 9 ספרות <span className="text-muni-gray6">(כולל ספרת ביקורת)</span>
             </label>
-            <input
-              type="tel"
-              maxLength={9}
-              value={id}
-              onChange={(e) => setId(e.target.value.replace(/\D/g, ''))}
-              placeholder="מספר תעודת זהות/דרכון"
-              className="input mb-4 tracking-widest text-center"
-            />
+            <div className="relative mb-4">
+              <input
+                type="tel"
+                maxLength={9}
+                value={id}
+                onChange={(e) => setId(e.target.value.replace(/\D/g, ''))}
+                placeholder="מספר תעודת זהות/דרכון"
+                className="input pl-10 text-center tracking-widest"
+              />
+              <User size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-muni-gray6" />
+            </div>
 
-            <label className="mb-1 block text-sm font-medium text-muni-text">סיסמה</label>
+            <label className="mb-1 block text-sm font-medium text-muni-darkgray">סיסמה</label>
             <div className="relative">
               <input
                 type={showPwd ? 'text' : 'password'}
@@ -72,7 +68,7 @@ export default function Login() {
               <button
                 type="button"
                 onClick={() => setShowPwd(!showPwd)}
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-muni-muted"
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-muni-gray6"
                 aria-label="הצג סיסמה"
               >
                 {showPwd ? <EyeOff size={18} /> : <Eye size={18} />}
@@ -83,16 +79,12 @@ export default function Login() {
               <a href="#" className="text-sm font-medium text-muni-primary">שכחתי סיסמה</a>
             </div>
 
-            <button
-              type="submit"
-              disabled={!valid}
-              className="btn-primary mt-8 w-full"
-            >
+            <button type="submit" disabled={!valid} className="btn-primary mt-8 w-full">
               <ShieldCheck size={18} />
               כניסה
             </button>
 
-            <p className="mt-6 text-center text-sm text-muni-muted">
+            <p className="mt-6 text-center text-sm text-muni-gray6">
               עדיין לא רשומים? <a href="#" className="font-medium text-muni-primary">לחצו כאן</a>
               {' '}לכניסה ללא הזדהות
             </p>
@@ -103,12 +95,12 @@ export default function Login() {
         )}
 
         {step === 'otp' && (
-          <div className="rounded-3xl bg-white p-8 shadow-card">
-            <p className="text-center text-sm text-muni-muted">קוד האימות נשלח למספר</p>
-            <p className="text-center text-lg font-bold tracking-wider text-muni-text">
+          <div className="rounded-[36px] bg-white p-10 shadow-card">
+            <p className="text-center text-sm text-muni-gray6">קוד האימות נשלח למספר</p>
+            <p className="text-center text-xl font-bold tracking-wider text-muni-darkgray">
               05X-XXX{id.slice(-4) || '3425'}
             </p>
-            <h2 className="mt-6 mb-8 text-center text-xl font-bold text-muni-deep">מה הקוד שקיבלת?</h2>
+            <h2 className="mb-8 mt-6 text-center text-[24px] font-semibold text-muni-primary">מה הקוד שקיבלת?</h2>
 
             <div className="mb-4 flex justify-center gap-2" dir="ltr">
               {otp.map((d, i) => (
@@ -119,12 +111,12 @@ export default function Login() {
                   onChange={(e) => handleOtp(i, e.target.value)}
                   maxLength={1}
                   inputMode="numeric"
-                  className="h-12 w-12 rounded-lg border border-gray-200 text-center text-xl font-semibold outline-none transition focus:border-muni-primary focus:ring-2 focus:ring-muni-accent/20"
+                  className="h-12 w-12 rounded-lg border border-gray-200 text-center text-xl font-semibold outline-none transition focus:border-muni-primary focus:ring-2 focus:ring-muni-secondary/30"
                 />
               ))}
             </div>
 
-            <p className="mb-6 flex items-center justify-center gap-1 text-center text-sm text-muni-muted">
+            <p className="mb-6 flex items-center justify-center gap-1 text-center text-sm text-muni-gray6">
               <KeyRound size={14} /> הקוד תקף ל-5 דקות
             </p>
 
@@ -137,7 +129,7 @@ export default function Login() {
               <ShieldCheck size={18} />
             </button>
 
-            <p className="mt-4 text-center text-sm text-muni-muted">
+            <p className="mt-4 text-center text-sm text-muni-gray6">
               לא קיבלתם קוד? <a href="#" className="font-medium text-muni-primary">לחצו לשליחה חוזרת</a>
             </p>
           </div>
