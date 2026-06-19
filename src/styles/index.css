@@ -76,13 +76,14 @@ body {
 }
 
 /* Bottom wave divider — 4 overlapping SVG path layers, each scrolling
-   horizontally at different speeds with different opacities for depth. */
+   horizontally at different speeds with different opacities for depth.
+   Slim divider so it doesn't eat into the turquoise hero area. */
 .hero-waves {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 140px;
+  height: 55px;
   pointer-events: none;
   z-index: 2;
   overflow: hidden;
