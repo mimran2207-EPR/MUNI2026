@@ -17,41 +17,49 @@ body {
   background: #0a3a55 url('/hero-bg.png') center / cover no-repeat;
 }
 
+/* Continuous ocean-wave animation — full 360° rotation, never pauses */
 .wave {
   position: absolute;
-  inset: -30%;
+  top: 50%;
+  left: 50%;
+  width: 180%;
+  height: 200%;
+  margin-top: -100%;
+  margin-left: -90%;
   pointer-events: none;
-  filter: blur(70px);
-  opacity: 0.85;
+  filter: blur(60px);
+  opacity: 0.7;
   will-change: transform;
+  transform-origin: center;
 }
 
 .wave-a {
   background:
-    radial-gradient(38% 55% at 20% 30%, #5CEBBE 0%, transparent 60%),
-    radial-gradient(36% 52% at 80% 70%, #83DFE8 0%, transparent 60%),
-    radial-gradient(32% 48% at 50% 45%, #2DB6E0 0%, transparent 60%);
-  animation: wave-a 10s ease-in-out infinite alternate;
+    radial-gradient(35% 50% at 25% 30%, #5CEBBE 0%, transparent 55%),
+    radial-gradient(32% 48% at 75% 65%, #83DFE8 0%, transparent 55%),
+    radial-gradient(28% 42% at 50% 50%, #2DB6E0 0%, transparent 55%);
+  animation: wave-spin-a 16s linear infinite;
 }
 
 .wave-b {
   background:
-    radial-gradient(40% 50% at 70% 20%, #83DFE8 0%, transparent 60%),
-    radial-gradient(36% 48% at 25% 75%, #5CEBBE 0%, transparent 60%),
-    radial-gradient(38% 50% at 90% 55%, #027DB3 0%, transparent 60%);
-  animation: wave-b 13s ease-in-out infinite alternate;
+    radial-gradient(38% 45% at 70% 25%, #83DFE8 0%, transparent 55%),
+    radial-gradient(32% 45% at 30% 75%, #5CEBBE 0%, transparent 55%),
+    radial-gradient(35% 48% at 85% 60%, #027DB3 0%, transparent 55%);
+  animation: wave-spin-b 22s linear infinite;
 }
 
-@keyframes wave-a {
-  0%   { transform: translate3d(-8%, -5%, 0) scale(1.0)  rotate(0deg); }
-  50%  { transform: translate3d(5%, 7%, 0)   scale(1.25) rotate(15deg); }
-  100% { transform: translate3d(10%, -4%, 0) scale(1.1)  rotate(-12deg); }
+/* Two counter-rotating layers create flowing ocean-like motion */
+@keyframes wave-spin-a {
+  0%   { transform: rotate(0deg)   scale(1); }
+  50%  { transform: rotate(180deg) scale(1.15); }
+  100% { transform: rotate(360deg) scale(1); }
 }
 
-@keyframes wave-b {
-  0%   { transform: translate3d(5%, 4%, 0)    scale(1.1)  rotate(0deg); }
-  50%  { transform: translate3d(-8%, -5%, 0)  scale(1.3)  rotate(-18deg); }
-  100% { transform: translate3d(-3%, 6%, 0)   scale(1.05) rotate(13deg); }
+@keyframes wave-spin-b {
+  0%   { transform: rotate(360deg) scale(1.1); }
+  50%  { transform: rotate(180deg) scale(0.95); }
+  100% { transform: rotate(0deg)   scale(1.1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
