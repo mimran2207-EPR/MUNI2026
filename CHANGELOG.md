@@ -7,6 +7,13 @@
 
 ## [Unreleased]
 
+### השתנה 🔧
+- שדרוג Vite מ-5.4 ל-6.0 (תאימות ל-Cloudflare Pages)
+- עדכון `@vitejs/plugin-react`, `postcss`, `tailwindcss` לגרסאות עדכניות
+
+### נוסף ✨
+- `public/_redirects` — Routing מסוג SPA ל-Cloudflare Pages
+
 ### מתוכנן
 - חיבור ל-API של ה-backend
 - מערכת אימות אמיתית
