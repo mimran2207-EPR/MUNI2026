@@ -16,15 +16,12 @@ const services = [
 
 export default function Home() {
   const iconsRef = useRef(null);
-
-  const scroll = (dir) => {
-    iconsRef.current?.scrollBy({ left: dir * 320, behavior: 'smooth' });
-  };
+  const scroll = (dir) => iconsRef.current?.scrollBy({ left: dir * 320, behavior: 'smooth' });
 
   return (
     <>
-      {/* HERO */}
-      <section className="hero-bg relative pb-32 pt-[120px]">
+      {/* HERO — real Figma silk background */}
+      <section className="hero-bg relative overflow-hidden pt-[120px]">
         <div className="mx-auto mt-12 max-w-[700px] px-6 text-center">
           <h1 className="text-[36px] font-medium leading-[42px] tracking-[-0.72px] text-white">
             שלום ישראל, הגעת למרחב הדיגיטלי של
@@ -33,7 +30,8 @@ export default function Home() {
           </h1>
         </div>
 
-        <div className="relative mx-auto mt-12 w-full max-w-[848px] px-6">
+        {/* Search bar — sits at the bottom edge of the hero */}
+        <div className="relative mx-auto mb-[-36px] mt-12 w-full max-w-[848px] px-6">
           <div className="flex h-[72px] items-center justify-between gap-4 rounded-full bg-white px-8 shadow-search">
             <Search size={24} className="shrink-0 text-muni-primary" />
             <input
@@ -43,17 +41,18 @@ export default function Home() {
             />
           </div>
         </div>
+        <div className="h-12" />
       </section>
 
-      {/* ICONS row — overlaps hero */}
-      <section className="relative z-10 -mt-12">
-        <div className="mx-auto flex max-w-[1440px] items-center gap-6 px-6 py-12">
+      {/* ICONS row — on clean white below the hero */}
+      <section className="bg-white">
+        <div className="mx-auto flex max-w-[1440px] items-center gap-4 px-6 py-16">
           <button
             onClick={() => scroll(1)}
-            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-muni-primary shadow-md transition hover:bg-muni-light"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-muni-primary transition hover:bg-muni-light"
             aria-label="הקודם"
           >
-            <ChevronRight size={20} />
+            <ChevronRight size={28} strokeWidth={1.5} />
           </button>
 
           <div
@@ -63,7 +62,7 @@ export default function Home() {
             {services.map((s) => (
               <button
                 key={s.label}
-                className="group flex w-[150px] shrink-0 flex-col items-center gap-1 transition"
+                className="group flex w-[140px] shrink-0 flex-col items-center gap-1 transition"
               >
                 <div className="flex h-[100px] w-[100px] items-center justify-center transition group-hover:-translate-y-1">
                   <img src={s.src} alt={s.label} className="h-full w-full object-contain" />
@@ -75,10 +74,10 @@ export default function Home() {
 
           <button
             onClick={() => scroll(-1)}
-            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-muni-primary shadow-md transition hover:bg-muni-light"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-muni-primary transition hover:bg-muni-light"
             aria-label="הבא"
           >
-            <ChevronLeft size={20} />
+            <ChevronLeft size={28} strokeWidth={1.5} />
           </button>
         </div>
       </section>
@@ -94,27 +93,18 @@ export default function Home() {
               { label: 'עדכון פרטים' },
               { label: 'התשלומים שלי' },
               { label: 'הגדרות החשבון שלי' },
-              {
-                label: 'הנכס שלי',
-                active: true,
-                children: ['פרטי הנכס שלי', 'כתובת הנכס', 'שם הפעולה']
-              },
+              { label: 'הנכס שלי', active: true, children: ['פרטי הנכס שלי', 'כתובת הנכס', 'שם הפעולה'] },
               { label: 'הסדר תשלום' },
               { label: 'תעריפי ארנונה' }
             ]}
           />
-
           <MenuCard
             title="פעולות מהירות"
             iconSrc="/icons/card-actions.svg"
             items={[
               { label: 'רוכשים בקליק' },
               { label: 'הרשמה לחוגים' },
-              {
-                label: 'חינוך',
-                active: true,
-                children: ['רישום גני ילדים', 'רישום קייטנות', 'הצגת שיבוץ']
-              },
+              { label: 'חינוך', active: true, children: ['רישום גני ילדים', 'רישום קייטנות', 'הצגת שיבוץ'] },
               { label: 'ויתור סודיות' },
               { label: 'שליחת שובר למייל' },
               { label: 'בקשה כללית' },
@@ -123,7 +113,6 @@ export default function Home() {
               { label: 'עדכון הוראת קבע בתשלום אשראי' }
             ]}
           />
-
           <MenuCard
             title="תשלומים וגבייה"
             iconSrc="/icons/card-payments.svg"
@@ -133,15 +122,10 @@ export default function Home() {
               { label: 'בקשה לאישור בטאבו' },
               { label: 'תשלום מזדמן' },
               { label: 'ספק של הרשות' },
-              {
-                label: 'הנדסה',
-                active: true,
-                children: ['תיק מידע להיתר', 'אישור היעדר חובות', 'דף מידע תכנוני', 'חידוש היעדר חובות']
-              },
+              { label: 'הנדסה', active: true, children: ['תיק מידע להיתר', 'אישור היעדר חובות', 'דף מידע תכנוני', 'חידוש היעדר חובות'] },
               { label: 'אישור על גובה תשלומים' }
             ]}
           />
-
           <MenuCard
             title="אישורים וטפסים"
             iconSrc="/icons/card-forms.svg"

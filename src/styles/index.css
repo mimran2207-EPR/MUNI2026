@@ -11,13 +11,9 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Hero background — matches Figma: deep teal-blue with soft cyan blobs */
+/* Hero background — real Figma asset (silk-like abstract teal) */
 .hero-bg {
-  background:
-    radial-gradient(800px 480px at 18% 30%, rgba(131, 223, 232, 0.35) 0%, transparent 60%),
-    radial-gradient(720px 460px at 82% 70%, rgba(92, 235, 190, 0.18) 0%, transparent 55%),
-    radial-gradient(1100px 600px at 50% 110%, rgba(2, 125, 179, 0.7) 0%, transparent 70%),
-    linear-gradient(135deg, #0a3a55 0%, #0f5d80 45%, #1392c4 100%);
+  background: #0a3a55 url('/hero-bg.png') center / cover no-repeat;
 }
 
 /* Soft turquoise blobs behind the cards */
