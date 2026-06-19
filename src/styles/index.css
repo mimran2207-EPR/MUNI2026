@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: 'Heebo', 'Assistant', system-ui, sans-serif;
+  background: #F4F8FB;
+  color: #1A2B3C;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-muni-primary px-6 py-3 font-medium text-white transition hover:bg-muni-dark active:scale-[0.98] disabled:cursor-not-allowed disabled:bg-gray-300;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-muni-primary px-6 py-3 font-medium text-muni-primary transition hover:bg-muni-light;
+  }
+  .card {
+    @apply rounded-2xl bg-white p-6 shadow-card transition hover:shadow-cardHover;
+  }
+  .input {
+    @apply w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-base outline-none transition focus:border-muni-primary focus:ring-2 focus:ring-muni-accent/20;
+  }
+  .chip {
+    @apply inline-flex items-center gap-2 rounded-full bg-muni-light px-3 py-1 text-sm text-muni-dark;
+  }
+}
+
+/* City silhouette for footer */
+.city-silhouette {
+  background:
+    linear-gradient(to top, rgba(15, 61, 92, 0.18) 0%, transparent 60%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 200' preserveAspectRatio='none'><path fill='%2316557A' opacity='0.55' d='M0 200 V120 L40 110 L40 80 L80 80 L80 60 L120 60 L120 95 L170 95 L170 70 L210 70 L210 110 L260 110 L260 90 L300 90 L300 50 L340 50 L340 100 L390 100 L390 80 L430 80 L430 130 L480 130 L480 90 L520 90 L520 60 L560 60 L560 110 L610 110 L610 80 L650 80 L650 100 L700 100 L700 70 L740 70 L740 90 L780 90 L780 120 L830 120 L830 80 L870 80 L870 60 L910 60 L910 110 L960 110 L960 90 L1000 90 L1000 70 L1040 70 L1040 110 L1090 110 L1090 90 L1130 90 L1130 60 L1170 60 L1170 100 L1220 100 L1220 80 L1260 80 L1260 110 L1310 110 L1310 90 L1350 90 L1350 70 L1400 70 L1400 110 L1440 110 L1440 200 Z'/></svg>") no-repeat bottom / cover;
+}
