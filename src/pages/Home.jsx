@@ -10,7 +10,8 @@ const services = [
   { label: 'חניה', src: '/icons/parking.svg' },
   { label: 'פיקוח', src: '/icons/supervision.svg' },
   { label: 'חוגים', src: '/icons/classes.svg' },
-  { label: 'חינוך', src: '/icons/education.svg' },
+  { label: 'חינוך', src: '/icons/education.svg', href: 'https://departmentof.choreshchana.workers.dev/' },
+  { label: 'טפסים דיגיטליים', src: '/icons/digital-forms.svg', href: 'https://epr-digital-public.pages.dev/' },
   { label: 'ארנונה', src: '/icons/arnona.svg' }
 ];
 
@@ -45,6 +46,40 @@ export default function Home() {
           </div>
         </div>
         <div className="h-12" />
+
+        {/* Bottom wave divider — 4 overlapping SVG paths flowing on X-axis.
+            viewBox is 2880 wide, with the first 1440 mirrored in the second
+            1440, so translateX(-50%) loops seamlessly. */}
+        <div className="hero-waves" aria-hidden>
+          {/* Layer 1 — softest, slowest, lightest turquoise (period 720, 4 cycles) */}
+          <svg className="wave-layer-1" viewBox="0 0 2880 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              fill="#83DFE8"
+              d="M0,70 Q180,20 360,70 T720,70 T1080,70 T1440,70 T1800,70 T2160,70 T2520,70 T2880,70 L2880,140 L0,140 Z"
+            />
+          </svg>
+          {/* Layer 2 — mint accent (period 480, 6 cycles) */}
+          <svg className="wave-layer-2" viewBox="0 0 2880 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              fill="#5CEBBE"
+              d="M0,85 Q120,40 240,85 T480,85 T720,85 T960,85 T1200,85 T1440,85 T1680,85 T1920,85 T2160,85 T2400,85 T2640,85 T2880,85 L2880,140 L0,140 Z"
+            />
+          </svg>
+          {/* Layer 3 — deeper teal mid (period 360, 8 cycles) */}
+          <svg className="wave-layer-3" viewBox="0 0 2880 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              fill="#27B7C9"
+              d="M0,100 Q90,65 180,100 T360,100 T540,100 T720,100 T900,100 T1080,100 T1260,100 T1440,100 T1620,100 T1800,100 T1980,100 T2160,100 T2340,100 T2520,100 T2700,100 T2880,100 L2880,140 L0,140 Z"
+            />
+          </svg>
+          {/* Layer 4 — top white wave that hands off to the white icons row (period 288, 10 cycles) */}
+          <svg className="wave-layer-4" viewBox="0 0 2880 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              fill="#FFFFFF"
+              d="M0,118 Q72,95 144,118 T288,118 T432,118 T576,118 T720,118 T864,118 T1008,118 T1152,118 T1296,118 T1440,118 T1584,118 T1728,118 T1872,118 T2016,118 T2160,118 T2304,118 T2448,118 T2592,118 T2736,118 T2880,118 L2880,140 L0,140 Z"
+            />
+          </svg>
+        </div>
       </section>
 
       {/* ICONS row — on clean white below the hero */}
@@ -62,17 +97,22 @@ export default function Home() {
             ref={iconsRef}
             className="no-scrollbar flex flex-1 items-start justify-start gap-6 overflow-x-auto scroll-smooth md:justify-center"
           >
-            {services.map((s) => (
-              <button
-                key={s.label}
-                className="group flex w-[140px] shrink-0 flex-col items-center gap-1 transition"
-              >
-                <div className="flex h-[100px] w-[100px] items-center justify-center transition group-hover:-translate-y-1">
-                  <img src={s.src} alt={s.label} className="h-full w-full object-contain" />
-                </div>
-                <span className="text-[20px] leading-6 text-muni-primary">{s.label}</span>
-              </button>
-            ))}
+            {services.map((s) => {
+              const inner = (
+                <>
+                  <div className="flex h-[100px] w-[100px] items-center justify-center transition group-hover:-translate-y-1">
+                    <img src={s.src} alt={s.label} className="h-full w-full object-contain" />
+                  </div>
+                  <span className="text-[20px] leading-6 text-muni-primary">{s.label}</span>
+                </>
+              );
+              const cls = 'group flex w-[140px] shrink-0 flex-col items-center gap-1 transition';
+              return s.href ? (
+                <a key={s.label} href={s.href} className={cls}>{inner}</a>
+              ) : (
+                <button key={s.label} className={cls}>{inner}</button>
+              );
+            })}
           </div>
 
           <button

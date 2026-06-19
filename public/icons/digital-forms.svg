@@ -1,0 +1,25 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="digital-forms">
+  <!-- Document body -->
+  <path d="M28 14 L62 14 L78 30 L78 86 L28 86 Z" fill="#E6F2F7" fill-opacity="0.3"/>
+  <!-- Folded corner accent -->
+  <path d="M62 14 L78 30 L62 30 Z" fill="#83DFE8" fill-opacity="0.6"/>
+  <!-- Form lines (mint) -->
+  <rect x="36" y="44" width="34" height="3" rx="1.5" fill="#5CEBBE"/>
+  <rect x="36" y="54" width="34" height="3" rx="1.5" fill="#5CEBBE"/>
+  <rect x="36" y="64" width="22" height="3" rx="1.5" fill="#5CEBBE"/>
+
+  <!-- Outlines -->
+  <path d="M28 14 L62 14 L78 30 L78 86 L28 86 Z" stroke="#027DB3" stroke-width="3" stroke-linejoin="round" fill="none"/>
+  <path d="M62 14 L62 30 L78 30" stroke="#027DB3" stroke-width="3" stroke-linejoin="round" fill="none"/>
+
+  <!-- Digital pen / signature stroke (top-right) -->
+  <path d="M70 70 L84 56 L90 62 L76 76 L68 78 Z" fill="#83DFE8" fill-opacity="0.85" stroke="#027DB3" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M82 58 L88 64" stroke="#027DB3" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M68 78 L72 74" stroke="#027DB3" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Digital check mark in circle (bottom-left, indicates "digital" / verified) -->
+  <circle cx="36" cy="76" r="8" fill="#FFFFFF" stroke="#027DB3" stroke-width="2.5"/>
+  <path d="M32 76 L35 79 L40 73" stroke="#027DB3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</g>
+</svg>
