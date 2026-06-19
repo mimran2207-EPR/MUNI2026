@@ -11,67 +11,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Hero — silk image as a 3D moving scene.
-   The image lives on ::before with perspective+3D transforms so it appears
-   to rotate/zoom/pan in 3D space like a cinematic shot. */
+/* Hero background — clean static silk image as per design reference 111.jpg */
 .hero-bg {
   position: relative;
-  background-color: #0a3a55;
+  background: #0a3a55 url('/hero-bg.png') center / cover no-repeat;
   overflow: hidden;
-  perspective: 1400px;
-  perspective-origin: 50% 50%;
-  isolation: isolate;
-}
-
-.hero-bg::before {
-  content: "";
-  position: absolute;
-  inset: -12%;
-  background: url('/hero-bg.png') center / cover no-repeat;
-  transform-style: preserve-3d;
-  transform-origin: 50% 50%;
-  will-change: transform, filter;
-  animation:
-    silk-3d-camera 22s ease-in-out infinite alternate,
-    silk-3d-pulse  9s ease-in-out infinite;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* Keep hero content above the moving silk plane */
-.hero-bg > .wave { z-index: 1; }
-.hero-bg > div { position: relative; z-index: 1; }
-
-/* 3D camera move — rotate on Y/X axes, push back/forward on Z, slow zoom */
-@keyframes silk-3d-camera {
-  0% {
-    transform:
-      translate3d(-2%, -1%, 0)
-      rotateX( 3deg) rotateY(-6deg) rotateZ(-1deg)
-      scale(1.04);
-  }
-  50% {
-    transform:
-      translate3d( 2%,  2%, 60px)
-      rotateX(-2deg) rotateY( 5deg) rotateZ( 1deg)
-      scale(1.12);
-  }
-  100% {
-    transform:
-      translate3d( 3%, -2%, 0)
-      rotateX( 4deg) rotateY( 7deg) rotateZ( 0.5deg)
-      scale(1.06);
-  }
-}
-
-/* Subtle brightness/saturation pulse — the silk "breathes" */
-@keyframes silk-3d-pulse {
-  0%, 100% { filter: brightness(1.00) saturate(1.00) contrast(1.00); }
-  50%      { filter: brightness(1.10) saturate(1.18) contrast(1.05); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-bg::before { animation: none; }
 }
 
 
