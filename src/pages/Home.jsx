@@ -1,50 +1,31 @@
 import { useRef } from 'react';
-import {
-  Search,
-  ChevronLeft,
-  ChevronRight,
-  ShoppingCart,
-  Megaphone,
-  HeartHandshake,
-  Building2,
-  Car,
-  ShieldCheck,
-  Music,
-  GraduationCap,
-  Receipt,
-  User,
-  Wallet,
-  Zap,
-  FileCheck
-} from 'lucide-react';
+import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import MenuCard from '../components/MenuCard';
 
 const services = [
-  { label: 'רוכשים בקליק', icon: ShoppingCart },
-  { label: 'שילוט', icon: Megaphone },
-  { label: 'רווחה', icon: HeartHandshake },
-  { label: 'הנדסה', icon: Building2 },
-  { label: 'חניה', icon: Car },
-  { label: 'פיקוח', icon: ShieldCheck },
-  { label: 'חוגים', icon: Music },
-  { label: 'חינוך', icon: GraduationCap },
-  { label: 'ארנונה', icon: Receipt }
+  { label: 'רוכשים בקליק', src: '/icons/clickpay.svg' },
+  { label: 'שילוט', src: '/icons/signage.svg' },
+  { label: 'רווחה', src: '/icons/welfare.svg' },
+  { label: 'הנדסה', src: '/icons/engineering.svg' },
+  { label: 'חניה', src: '/icons/parking.svg' },
+  { label: 'פיקוח', src: '/icons/supervision.svg' },
+  { label: 'חוגים', src: '/icons/classes.svg' },
+  { label: 'חינוך', src: '/icons/education.svg' },
+  { label: 'ארנונה', src: '/icons/arnona.svg' }
 ];
 
 export default function Home() {
   const iconsRef = useRef(null);
 
   const scroll = (dir) => {
-    if (!iconsRef.current) return;
-    iconsRef.current.scrollBy({ left: dir * 320, behavior: 'smooth' });
+    iconsRef.current?.scrollBy({ left: dir * 320, behavior: 'smooth' });
   };
 
   return (
     <>
       {/* HERO */}
       <section className="hero-bg relative pb-32 pt-[120px]">
-        {/* Title centered */}
-        <div className="mx-auto mt-12 max-w-[564px] px-6 text-center">
+        <div className="mx-auto mt-12 max-w-[700px] px-6 text-center">
           <h1 className="text-[36px] font-medium leading-[42px] tracking-[-0.72px] text-white">
             שלום ישראל, הגעת למרחב הדיגיטלי של
             <br />
@@ -52,7 +33,6 @@ export default function Home() {
           </h1>
         </div>
 
-        {/* Search bar */}
         <div className="relative mx-auto mt-12 w-full max-w-[848px] px-6">
           <div className="flex h-[72px] items-center justify-between gap-4 rounded-full bg-white px-8 shadow-search">
             <Search size={24} className="shrink-0 text-muni-primary" />
@@ -65,8 +45,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ICONS row — overlapping hero/cards section */}
-      <section className="-mt-12 relative z-10">
+      {/* ICONS row — overlaps hero */}
+      <section className="relative z-10 -mt-12">
         <div className="mx-auto flex max-w-[1440px] items-center gap-6 px-6 py-12">
           <button
             onClick={() => scroll(1)}
@@ -78,17 +58,15 @@ export default function Home() {
 
           <div
             ref={iconsRef}
-            className="no-scrollbar flex flex-1 items-start justify-start gap-4 overflow-x-auto scroll-smooth md:justify-center"
+            className="no-scrollbar flex flex-1 items-start justify-start gap-6 overflow-x-auto scroll-smooth md:justify-center"
           >
             {services.map((s) => (
               <button
                 key={s.label}
-                className="group flex w-[150px] shrink-0 flex-col items-center gap-2"
+                className="group flex w-[150px] shrink-0 flex-col items-center gap-1 transition"
               >
-                <div className="relative flex h-[100px] w-[100px] items-center justify-center rounded-full bg-white shadow-md transition group-hover:-translate-y-1 group-hover:shadow-lg">
-                  <div className="flex h-[88px] w-[88px] items-center justify-center rounded-full bg-gradient-to-br from-muni-secondary to-muni-accent">
-                    <s.icon size={42} strokeWidth={1.4} className="text-muni-primary" />
-                  </div>
+                <div className="flex h-[100px] w-[100px] items-center justify-center transition group-hover:-translate-y-1">
+                  <img src={s.src} alt={s.label} className="h-full w-full object-contain" />
                 </div>
                 <span className="text-[20px] leading-6 text-muni-primary">{s.label}</span>
               </button>
@@ -110,7 +88,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-[1140px] gap-x-16 gap-y-16 px-6 py-12 md:grid-cols-2 md:justify-items-center">
           <MenuCard
             title="האזור האישי שלי"
-            icon={User}
+            iconSrc="/icons/card-personal.svg"
             items={[
               { label: 'פרטים אישיים' },
               { label: 'עדכון פרטים' },
@@ -128,7 +106,7 @@ export default function Home() {
 
           <MenuCard
             title="פעולות מהירות"
-            icon={Zap}
+            iconSrc="/icons/card-actions.svg"
             items={[
               { label: 'רוכשים בקליק' },
               { label: 'הרשמה לחוגים' },
@@ -148,7 +126,7 @@ export default function Home() {
 
           <MenuCard
             title="תשלומים וגבייה"
-            icon={Wallet}
+            iconSrc="/icons/card-payments.svg"
             items={[
               { label: 'תשלום יתרת חוב' },
               { label: 'תשלום שובר' },
@@ -166,7 +144,7 @@ export default function Home() {
 
           <MenuCard
             title="אישורים וטפסים"
-            icon={FileCheck}
+            iconSrc="/icons/card-forms.svg"
             items={[
               { label: 'בקשת הנחה לארנונה' },
               { label: 'הפקת אישור תושב' },

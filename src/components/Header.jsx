@@ -14,11 +14,13 @@ export default function Header({ transparent = false }) {
       <div className="mx-auto flex h-full max-w-[1440px] items-center justify-between px-20">
         {/* Right side (RTL first) — Council badge + user pill */}
         <div className="flex items-center gap-20">
-          {/* Council logo */}
-          <Link to="/" aria-label="מועצה אזורית מנשה" className="flex h-[100px] w-[100px] items-center justify-center overflow-hidden rounded-full bg-white p-2.5 shadow-md">
-            <div className="flex h-full w-full items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 text-xs font-bold text-white">
-              מא.<br />מנשה
-            </div>
+          {/* Council logo — real image from Figma */}
+          <Link
+            to="/"
+            aria-label="מועצה אזורית מנשה"
+            className="flex h-[100px] w-[100px] items-center justify-center overflow-hidden rounded-full bg-white p-2.5 shadow-md"
+          >
+            <img src="/logos/council.png" alt="מועצה אזורית מנשה" className="h-full w-full object-contain" />
           </Link>
 
           {/* User pill */}

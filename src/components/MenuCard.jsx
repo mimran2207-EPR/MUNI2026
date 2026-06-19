@@ -1,22 +1,20 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
-// Reusable card that matches Figma layout:
+// Card matches Figma:
 // - 500px wide, white, rounded-[36px]
-// - Header: 102px tall with 70px icon on the right + 28px title in blue
+// - Header: 70px icon image + 28px blue title
 // - Body: list of menu items (some expandable)
-export default function MenuCard({ title, icon: Icon, items }) {
+export default function MenuCard({ title, iconSrc, items }) {
   return (
     <div className="w-full max-w-[500px] rounded-[36px] bg-white px-4 pb-4 shadow-card">
-      {/* Header */}
       <div className="flex h-[102px] items-center justify-between px-6 py-4">
-        <div className="flex h-[70px] w-[70px] items-center justify-center rounded-2xl bg-gradient-to-br from-muni-secondary to-muni-accent">
-          {Icon && <Icon size={36} strokeWidth={1.4} className="text-muni-primary" />}
+        <div className="h-[70px] w-[70px] shrink-0">
+          {iconSrc && <img src={iconSrc} alt="" className="h-full w-full object-contain" />}
         </div>
         <h3 className="text-[28px] font-semibold leading-[30px] text-muni-primary">{title}</h3>
       </div>
 
-      {/* Body — menu items */}
       <ul className="flex flex-col px-4">
         {items.map((item, i) => (
           <MenuItem key={i} {...item} />
