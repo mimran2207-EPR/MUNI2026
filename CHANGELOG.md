@@ -12,7 +12,10 @@
 - עדכון `@vitejs/plugin-react`, `postcss`, `tailwindcss` לגרסאות עדכניות
 
 ### נוסף ✨
-- `public/_redirects` — Routing מסוג SPA ל-Cloudflare Pages
+- `wrangler.jsonc` — תצורת Cloudflare Workers עם `not_found_handling: single-page-application`
+
+### הוסר 🗑️
+- `public/_redirects` — לא נתמך ב-Cloudflare Workers (גרם ללולאה אינסופית)
 
 ### מתוכנן
 - חיבור ל-API של ה-backend
