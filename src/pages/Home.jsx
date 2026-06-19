@@ -20,9 +20,12 @@ export default function Home() {
 
   return (
     <>
-      {/* HERO — real Figma silk background */}
+      {/* HERO — real Figma silk background + animated turquoise wave overlays */}
       <section className="hero-bg relative overflow-hidden pt-[120px]">
-        <div className="mx-auto mt-12 max-w-[700px] px-6 text-center">
+        <div className="wave wave-a" aria-hidden />
+        <div className="wave wave-b" aria-hidden />
+
+        <div className="relative mx-auto mt-12 max-w-[700px] px-6 text-center">
           <h1 className="text-[36px] font-medium leading-[42px] tracking-[-0.72px] text-white">
             שלום ישראל, הגעת למרחב הדיגיטלי של
             <br />
