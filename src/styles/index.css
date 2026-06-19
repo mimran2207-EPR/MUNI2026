@@ -41,7 +41,6 @@ body {
 /* Keep hero content above the moving silk plane */
 .hero-bg > .wave { z-index: 1; }
 .hero-bg > div { position: relative; z-index: 1; }
-.hero-bg > .hero-waves { z-index: 2; }
 
 /* 3D camera move — rotate on Y/X axes, push back/forward on Z, slow zoom */
 @keyframes silk-3d-camera {
@@ -75,61 +74,6 @@ body {
   .hero-bg::before { animation: none; }
 }
 
-/* Bottom wave divider — 4 overlapping SVG path layers, each scrolling
-   horizontally at different speeds with different opacities for depth.
-   Slim divider so it doesn't eat into the turquoise hero area. */
-.hero-waves {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 55px;
-  pointer-events: none;
-  z-index: 2;
-  overflow: hidden;
-}
-
-.hero-waves svg {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 200%;
-  height: 100%;
-  will-change: transform;
-}
-
-/* Each layer has its own depth, color, opacity and speed.
-   translateX(-50%) = exactly one tile, so the loop is seamless. */
-.hero-waves .wave-layer-1 {
-  opacity: 0.40;
-  animation: wave-scroll-x 28s linear infinite;
-}
-.hero-waves .wave-layer-2 {
-  opacity: 0.55;
-  animation: wave-scroll-x-reverse 22s linear infinite;
-}
-.hero-waves .wave-layer-3 {
-  opacity: 0.75;
-  animation: wave-scroll-x 16s linear infinite;
-}
-.hero-waves .wave-layer-4 {
-  opacity: 1;
-  animation: wave-scroll-x-reverse 11s linear infinite;
-}
-
-@keyframes wave-scroll-x {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-@keyframes wave-scroll-x-reverse {
-  0%   { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-waves svg { animation: none !important; }
-}
 
 /* Continuous ocean-wave animation — full 360° rotation, never pauses */
 .wave {
