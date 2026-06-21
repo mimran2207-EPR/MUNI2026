@@ -3,7 +3,7 @@ import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import MenuCard from '../components/MenuCard';
 
 const services = [
-  { label: 'רוכשים בקליק', src: '/icons/clickpay.svg' },
+  { label: 'רוכשים בקליק', src: '/icons/online-shop.svg' },
   { label: 'שילוט', src: '/icons/signage.svg' },
   { label: 'רווחה', src: '/icons/welfare.svg' },
   { label: 'הנדסה', src: '/icons/engineering.svg' },
