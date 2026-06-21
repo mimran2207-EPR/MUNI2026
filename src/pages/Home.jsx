@@ -5,14 +5,14 @@ import MenuCard from '../components/MenuCard';
 
 const services = [
   { label: 'שילוט', src: '/icons/signage.svg' },
-  { label: 'רווחה', src: '/icons/welfare.svg' },
+  { label: 'ארנונה', src: '/icons/arnona.svg' },
   { label: 'הנדסה', src: '/icons/engineering.svg' },
   { label: 'פיקוח וחניה', src: '/icons/parking-enforcement.svg', href: 'https://lolaportal.com/dashboard/75/' },
   { label: 'רוכשים בקליק', src: '/icons/mobile-pay.svg', to: '/shop' },
   { label: 'פורטל ילדים', src: '/icons/education.svg', href: 'https://departmentof.choreshchana.workers.dev/' },
   { label: 'פורטל ספקים', src: '/icons/suppliers-portal.svg', href: 'https://eprvendorst.eprmuni.co.il/login?muniCode=2' },
   { label: 'טפסים דיגיטליים', src: '/icons/digital-forms.svg', href: 'https://epr-digital-public.pages.dev/' },
-  { label: 'ארנונה', src: '/icons/arnona.svg' }
+  { label: 'רווחה', src: '/icons/welfare.svg', href: 'https://t.eprmuni.co.il/#/Welfare?muni=1' }
 ];
 
 export default function Home() {
