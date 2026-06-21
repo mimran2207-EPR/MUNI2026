@@ -52,9 +52,9 @@ export default function Home() {
       <section className="bg-white">
         <div className="mx-auto flex max-w-[1440px] items-center gap-4 px-6 py-16">
           <button
-            onClick={() => scroll(1)}
+            onClick={() => scroll(-1)}
             className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-muni-primary transition hover:bg-muni-light"
-            aria-label="הקודם"
+            aria-label="הבא"
           >
             <ChevronRight size={28} strokeWidth={1.5} />
           </button>
@@ -80,9 +80,9 @@ export default function Home() {
           </div>
 
           <button
-            onClick={() => scroll(-1)}
+            onClick={() => scroll(1)}
             className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-muni-primary transition hover:bg-muni-light"
-            aria-label="הבא"
+            aria-label="הקודם"
           >
             <ChevronLeft size={28} strokeWidth={1.5} />
           </button>
@@ -96,13 +96,13 @@ export default function Home() {
             title="האזור האישי שלי"
             iconSrc="/icons/card-personal.svg"
             items={[
-              { label: 'פרטים אישיים' },
-              { label: 'עדכון פרטים' },
-              { label: 'התשלומים שלי' },
-              { label: 'הגדרות החשבון שלי' },
+              { label: 'פרטים אישיים', to: '/my-account' },
+              { label: 'עדכון פרטים', to: '/my-account' },
+              { label: 'התשלומים שלי', to: '/my-account' },
+              { label: 'הגדרות החשבון שלי', to: '/my-account' },
               { label: 'הנכס שלי', active: true, children: ['פרטי הנכס שלי', 'כתובת הנכס', 'שם הפעולה'] },
-              { label: 'הסדר תשלום' },
-              { label: 'תעריפי ארנונה' }
+              { label: 'הסדר תשלום', to: '/my-account' },
+              { label: 'תעריפי ארנונה', to: '/my-account' }
             ]}
           />
           <MenuCard
@@ -110,42 +110,42 @@ export default function Home() {
             iconSrc="/icons/card-actions.svg"
             items={[
               { label: 'רוכשים בקליק', to: '/shop' },
-              { label: 'הרשמה לחוגים' },
+              { label: 'הרשמה לחוגים', to: '/forms' },
               { label: 'חינוך', active: true, children: ['רישום גני ילדים', 'רישום קייטנות', 'הצגת שיבוץ'] },
-              { label: 'ויתור סודיות' },
-              { label: 'שליחת שובר למייל' },
-              { label: 'בקשה כללית' },
-              { label: 'השתתפות עצמית' },
-              { label: 'הצהרת מספר נפשות' },
-              { label: 'עדכון הוראת קבע בתשלום אשראי' }
+              { label: 'ויתור סודיות', to: '/forms' },
+              { label: 'שליחת שובר למייל', to: '/payments' },
+              { label: 'בקשה כללית', to: '/forms' },
+              { label: 'השתתפות עצמית', to: '/payments' },
+              { label: 'הצהרת מספר נפשות', to: '/forms' },
+              { label: 'עדכון הוראת קבע בתשלום אשראי', to: '/payments' }
             ]}
           />
           <MenuCard
             title="תשלומים וגבייה"
             iconSrc="/icons/card-payments.svg"
             items={[
-              { label: 'תשלום יתרת חוב' },
-              { label: 'תשלום שובר' },
-              { label: 'בקשה לאישור בטאבו' },
-              { label: 'תשלום מזדמן' },
-              { label: 'ספק של הרשות' },
+              { label: 'תשלום יתרת חוב', to: '/payments' },
+              { label: 'תשלום שובר', to: '/payments' },
+              { label: 'בקשה לאישור בטאבו', to: '/payments' },
+              { label: 'תשלום מזדמן', to: '/payments' },
+              { label: 'ספק של הרשות', to: '/payments' },
               { label: 'הנדסה', active: true, children: ['תיק מידע להיתר', 'אישור היעדר חובות', 'דף מידע תכנוני', 'חידוש היעדר חובות'] },
-              { label: 'אישור על גובה תשלומים' }
+              { label: 'אישור על גובה תשלומים', to: '/payments' }
             ]}
           />
           <MenuCard
             title="אישורים וטפסים"
             iconSrc="/icons/card-forms.svg"
             items={[
-              { label: 'בקשת הנחה לארנונה' },
-              { label: 'הפקת אישור תושב' },
-              { label: 'אישור תושב לרשות המיסים' },
-              { label: 'פתיחת תיק' },
-              { label: 'החלפת משלמים' },
-              { label: 'חניה' },
-              { label: 'חידוש אישור לטאבו' },
-              { label: 'הנחות ארנונה' },
-              { label: 'רישום ספק חדש' }
+              { label: 'בקשת הנחה לארנונה', to: '/forms' },
+              { label: 'הפקת אישור תושב', to: '/forms' },
+              { label: 'אישור תושב לרשות המיסים', to: '/forms' },
+              { label: 'פתיחת תיק', to: '/forms' },
+              { label: 'החלפת משלמים', to: '/forms' },
+              { label: 'חניה', to: '/forms' },
+              { label: 'חידוש אישור לטאבו', to: '/forms' },
+              { label: 'הנחות ארנונה', to: '/forms' },
+              { label: 'רישום ספק חדש', to: '/forms' }
             ]}
           />
         </div>
