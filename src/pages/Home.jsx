@@ -52,16 +52,16 @@ export default function Home() {
       <section className="bg-white">
         <div className="mx-auto flex max-w-[1440px] items-center gap-4 px-6 py-16">
           <button
-            onClick={() => scroll(-1)}
+            onClick={() => scroll(1)}
             className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-muni-primary transition hover:bg-muni-light"
-            aria-label="הבא"
+            aria-label="הקודם"
           >
             <ChevronRight size={28} strokeWidth={1.5} />
           </button>
 
           <div
             ref={iconsRef}
-            className="no-scrollbar flex flex-1 items-start justify-start gap-6 overflow-x-auto scroll-smooth md:justify-center"
+            className="no-scrollbar flex flex-1 items-start justify-start gap-6 overflow-x-auto scroll-smooth"
           >
             {services.map((s) => {
               const inner = (
@@ -80,9 +80,9 @@ export default function Home() {
           </div>
 
           <button
-            onClick={() => scroll(1)}
+            onClick={() => scroll(-1)}
             className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-muni-primary transition hover:bg-muni-light"
-            aria-label="הקודם"
+            aria-label="הבא"
           >
             <ChevronLeft size={28} strokeWidth={1.5} />
           </button>
