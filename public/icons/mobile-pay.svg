@@ -1,0 +1,40 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="mobile-pay">
+  <!-- Phone body fill -->
+  <rect x="22" y="14" width="42" height="72" rx="5" fill="#E6F2F7" fill-opacity="0.3"/>
+
+  <!-- Phone screen fill -->
+  <rect x="26" y="22" width="34" height="56" rx="2" fill="#83DFE8" fill-opacity="0.35"/>
+
+  <!-- Credit card on screen (centered) - mint accent -->
+  <rect x="29" y="38" width="28" height="20" rx="2.5" fill="#5CEBBE" fill-opacity="0.85"/>
+
+  <!-- Phone outer outline -->
+  <rect x="22" y="14" width="42" height="72" rx="5" stroke="#027DB3" stroke-width="2.5" fill="none"/>
+
+  <!-- Speaker (top of phone) -->
+  <line x1="37" y1="18" x2="49" y2="18" stroke="#027DB3" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- Phone screen outline -->
+  <rect x="26" y="22" width="34" height="56" rx="2" stroke="#027DB3" stroke-width="2" fill="none"/>
+
+  <!-- Home indicator (bottom bar) -->
+  <line x1="38" y1="82" x2="48" y2="82" stroke="#027DB3" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Credit card outline on screen -->
+  <rect x="29" y="38" width="28" height="20" rx="2.5" stroke="#027DB3" stroke-width="2" fill="none"/>
+
+  <!-- Card chip -->
+  <rect x="32" y="42" width="5" height="4" rx="0.6" fill="#027DB3"/>
+
+  <!-- Card brand stripes -->
+  <line x1="39" y1="44" x2="54" y2="44" stroke="#027DB3" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="32" y1="51" x2="52" y2="51" stroke="#027DB3" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="32" y1="55" x2="46" y2="55" stroke="#027DB3" stroke-width="1.2" stroke-linecap="round"/>
+
+  <!-- NFC contactless waves (right of phone) — signals tap-to-pay -->
+  <path d="M70 36 Q 76 50 70 64" stroke="#027DB3" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M76 30 Q 86 50 76 70" stroke="#027DB3" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M82 24 Q 94 50 82 76" stroke="#027DB3" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+</g>
+</svg>

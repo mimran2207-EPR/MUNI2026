@@ -8,7 +8,7 @@ const services = [
   { label: 'הנדסה', src: '/icons/engineering.svg' },
   { label: 'חניה', src: '/icons/parking.svg' },
   { label: 'פיקוח', src: '/icons/supervision.svg' },
-  { label: 'רוכשים בקליק', src: '/icons/online-shop.svg' },
+  { label: 'רוכשים בקליק', src: '/icons/mobile-pay.svg' },
   { label: 'חינוך', src: '/icons/education.svg', href: 'https://departmentof.choreshchana.workers.dev/' },
   { label: 'טפסים דיגיטליים', src: '/icons/digital-forms.svg', href: 'https://epr-digital-public.pages.dev/' },
   { label: 'ארנונה', src: '/icons/arnona.svg' }
