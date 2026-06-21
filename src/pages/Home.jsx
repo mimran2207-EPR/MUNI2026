@@ -10,7 +10,7 @@ const services = [
   { label: 'חניה', src: '/icons/parking.svg' },
   { label: 'פיקוח', src: '/icons/supervision.svg' },
   { label: 'רוכשים בקליק', src: '/icons/mobile-pay.svg', to: '/shop' },
-  { label: 'חינוך', src: '/icons/education.svg', href: 'https://departmentof.choreshchana.workers.dev/' },
+  { label: 'פורטל ילדים', src: '/icons/education.svg', href: 'https://departmentof.choreshchana.workers.dev/' },
   { label: 'טפסים דיגיטליים', src: '/icons/digital-forms.svg', href: 'https://epr-digital-public.pages.dev/' },
   { label: 'ארנונה', src: '/icons/arnona.svg' }
 ];
