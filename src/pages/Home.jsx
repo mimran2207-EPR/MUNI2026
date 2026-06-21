@@ -7,7 +7,7 @@ const services = [
   { label: 'שילוט', src: '/icons/signage.svg' },
   { label: 'רווחה', src: '/icons/welfare.svg' },
   { label: 'הנדסה', src: '/icons/engineering.svg' },
-  { label: 'חניה', src: '/icons/parking.svg' },
+  { label: 'חניה', src: '/icons/parking.svg', href: 'https://www.metropark.co.il/select-authority' },
   { label: 'פיקוח', src: '/icons/supervision.svg' },
   { label: 'רוכשים בקליק', src: '/icons/mobile-pay.svg', to: '/shop' },
   { label: 'פורטל ילדים', src: '/icons/education.svg', href: 'https://departmentof.choreshchana.workers.dev/' },
