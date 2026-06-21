@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ChevronLeft } from 'lucide-react';
 
 // Card matches Figma 222.jpg (Hebrew RTL):
@@ -25,9 +26,24 @@ export default function MenuCard({ title, iconSrc, items }) {
   );
 }
 
-function MenuItem({ label, active, children }) {
+function MenuItem({ label, active, children, to }) {
   const [open, setOpen] = useState(false);
   const hasChildren = Array.isArray(children) && children.length > 0;
+
+  if (to) {
+    return (
+      <li>
+        <Link
+          to={to}
+          className="block cursor-pointer px-4 py-2 text-right hover:bg-muni-light/50"
+        >
+          <span className={`text-lg leading-[36px] ${active ? 'font-medium text-muni-primary' : 'text-muni-gray6'}`}>
+            {label}
+          </span>
+        </Link>
+      </li>
+    );
+  }
 
   if (hasChildren) {
     return (

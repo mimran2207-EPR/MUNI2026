@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import MenuCard from '../components/MenuCard';
 
@@ -8,7 +9,7 @@ const services = [
   { label: 'הנדסה', src: '/icons/engineering.svg' },
   { label: 'חניה', src: '/icons/parking.svg' },
   { label: 'פיקוח', src: '/icons/supervision.svg' },
-  { label: 'רוכשים בקליק', src: '/icons/mobile-pay.svg' },
+  { label: 'רוכשים בקליק', src: '/icons/mobile-pay.svg', to: '/shop' },
   { label: 'חינוך', src: '/icons/education.svg', href: 'https://departmentof.choreshchana.workers.dev/' },
   { label: 'טפסים דיגיטליים', src: '/icons/digital-forms.svg', href: 'https://epr-digital-public.pages.dev/' },
   { label: 'ארנונה', src: '/icons/arnona.svg' }
@@ -72,11 +73,9 @@ export default function Home() {
                 </>
               );
               const cls = 'group flex w-[140px] shrink-0 flex-col items-center gap-1 transition';
-              return s.href ? (
-                <a key={s.label} href={s.href} className={cls}>{inner}</a>
-              ) : (
-                <button key={s.label} className={cls}>{inner}</button>
-              );
+              if (s.to) return <Link key={s.label} to={s.to} className={cls}>{inner}</Link>;
+              if (s.href) return <a key={s.label} href={s.href} className={cls}>{inner}</a>;
+              return <button key={s.label} className={cls}>{inner}</button>;
             })}
           </div>
 
@@ -110,7 +109,7 @@ export default function Home() {
             title="פעולות מהירות"
             iconSrc="/icons/card-actions.svg"
             items={[
-              { label: 'רוכשים בקליק' },
+              { label: 'רוכשים בקליק', to: '/shop' },
               { label: 'הרשמה לחוגים' },
               { label: 'חינוך', active: true, children: ['רישום גני ילדים', 'רישום קייטנות', 'הצגת שיבוץ'] },
               { label: 'ויתור סודיות' },
