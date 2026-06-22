@@ -6,7 +6,7 @@ import MenuCard from '../components/MenuCard';
 const services = [
   { label: 'שילוט', src: '/icons/signage.svg' },
   { label: 'ארנונה', src: '/icons/arnona.svg' },
-  { label: 'הנדסה', src: '/icons/engineering.svg' },
+  { label: 'הנדסה', src: '/icons/engineering.svg', to: '/service/handasa' },
   { label: 'פיקוח וחניה', src: '/icons/parking-enforcement.svg', href: 'https://lolaportal.com/dashboard/75/' },
   { label: 'רוכשים בקליק', src: '/icons/mobile-pay.svg', to: '/shop' },
   { label: 'פורטל ילדים', src: '/icons/education.svg', href: 'https://departmentof.choreshchana.workers.dev/' },
