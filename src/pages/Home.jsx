@@ -12,7 +12,7 @@ const services = [
   { label: 'פורטל ילדים', src: '/icons/education.svg', href: 'https://departmentof.choreshchana.workers.dev/' },
   { label: 'פורטל ספקים', src: '/icons/suppliers-portal.svg', href: 'https://eprvendorst.eprmuni.co.il/login?muniCode=2' },
   { label: 'טפסים דיגיטליים', src: '/icons/digital-forms.svg', href: 'https://epr-digital-public.pages.dev/' },
-  { label: 'רווחה', src: '/icons/welfare.svg', href: 'https://t.eprmuni.co.il/#/Welfare?muni=1' }
+  { label: 'רווחה', src: '/icons/welfare.svg', to: '/welfare-portal' }
 ];
 
 export default function Home() {
