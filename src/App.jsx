@@ -6,6 +6,7 @@ import MyAccount from './pages/MyAccount';
 import Payments from './pages/Payments';
 import Forms from './pages/Forms';
 import Shop from './pages/Shop';
+import ShopCategory from './pages/ShopCategory';
 import WelfarePortal from './pages/WelfarePortal';
 import ServiceCategory from './pages/ServiceCategory';
 import NotFound from './pages/NotFound';
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/payments" element={<Payments />} />
         <Route path="/forms" element={<Forms />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/shop/:categoryId" element={<ShopCategory />} />
         <Route path="/welfare-portal" element={<WelfarePortal />} />
         <Route path="/service/:slug" element={<ServiceCategory />} />
         <Route path="*" element={<NotFound />} />
