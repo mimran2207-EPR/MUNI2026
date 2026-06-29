@@ -1,4 +1,4 @@
-import { FolderPlus, FolderOpen } from 'lucide-react';
+import { HandHeart, ClipboardCheck } from 'lucide-react';
 
 const FILE_OPENING_URL = 'https://t.eprmuni.co.il/#/fileOpening';
 
@@ -7,7 +7,7 @@ const options = [
     id: 'new-case',
     title: 'פתיחת תיק רווחה חדש',
     description: 'פתיחת תיק חדש במחלקת הרווחה — לפנייה ראשונה לקבלת שירות.',
-    Icon: FolderPlus,
+    Icon: HandHeart,
     bg: 'from-sky-100 via-cyan-200 to-teal-300',
     iconBg: 'bg-white/85 text-muni-primary',
     cta: 'לפתיחת תיק חדש'
@@ -16,7 +16,7 @@ const options = [
     id: 'existing-case',
     title: 'פתיחת תיק רווחה קיים',
     description: 'המשך טיפול בתיק רווחה פעיל — עדכון פרטים, צירוף מסמכים והתכתבות.',
-    Icon: FolderOpen,
+    Icon: ClipboardCheck,
     bg: 'from-emerald-100 via-teal-200 to-cyan-300',
     iconBg: 'bg-white/85 text-muni-primary',
     cta: 'למעבר לתיק הקיים'
